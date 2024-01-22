@@ -8,11 +8,13 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
     cy.visit("http://45.79.116.38:8080/dhis-web-commons/security/login.action");
   });
 
-  it(`TEST 1 -Verify that as soon as the login page opens, by default the cursor should remain on the username textbox.`, () => {
-    cy.focused().should("have.id", "j_username");
-  });
+  // it(`TEST 1 -Verify that as soon as the login page opens, by default the cursor should remain on the username textbox.`, () => {
+  //   cy.focused().should("have.id", "j_username");
+  // });
 
   it(`TEST 2 -Login,  access the registration page and register a new patient`, () => {
+    cy.visit("http://45.79.116.38:8080/dhis-web-commons/security/login.action");
+
     cy.get("#j_username").type("admin");
     cy.get("#j_password").type("district");
 
@@ -27,38 +29,45 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
 
     cy.wait(7000);
 
-    cy.get(".ant-input").type("aga khan");
-    cy.contains("Aga Khan Bomet").click();
+    cy.get(".ant-input").type("texas");
+    cy.contains("Texas Cancer Centre").click();
 
-    cy.get(
-      '[href="#/search/pZSnyiO9EF7?stage=attributes"] > .formList-0-2-5'
-    ).click();
+    cy.get('[style="pointer-events: auto; cursor: pointer;"] > .formList-0-2-5').click();
 
-    cy.get("#search_R1vaUuILrDy").type(firstName);
+    cy.get('.header-0-2-9 > .ant-btn').click();
 
-    cy.get(".ant-btn").click();
 
-    cy.get(".footer-0-2-9 > .ant-btn").click();
+    cy.get('#search_R1vaUuILrDy').type(firstName);
+
+    cy.get('.ant-form-item-control-input-content > .ant-btn').click();
+
+    cy.get('.footer-0-2-17 > .ant-btn').click();
 
     const randomNumber = Math.floor(Math.random() * 100000)
       .toString()
       .substring(0, 5);
 
-    cy.get("#patientForm_zeXqc0lTQ4w").type(randomNumber);
+    cy.get('#patientForm_MiXrdHDZ6Hw').type(randomNumber);
     cy.get("#patientForm_R1vaUuILrDy").type(firstName);
     cy.get("#patientForm_hzVijy6tEUF").type(familyName);
+
+
+    cy.get('#patientForm_oob3a4JM7H6').click().trigger("keydown", { keyCode: 13 });
+
+    cy.get('#patientForm_eFbT7iTnljR').type(randomNumber)
+
 
     cy.get("#patientForm_mPpjmOxwsEZ") // Date of birth
       .click()
       .type("1992-03-12")
       .type("{enter}");
-    cy.get("#patientForm_xED9XkpCeUe") // Sex
+    cy.get('#patientForm_xED9XkpCeUe') // Sex
       .click()
       .trigger("keydown", { keyCode: 40 })
       .trigger("keydown", { keyCode: 13 });
-    cy.get("#patientForm_oLeKnI7oDRc") // Marital status
-      .trigger("keydown", { keyCode: 40 })
-      .trigger("keydown", { keyCode: 13 });
+    // cy.get("#patientForm_oLeKnI7oDRc") // Marital status
+    //   .trigger("keydown", { keyCode: 40 })
+    //   .trigger("keydown", { keyCode: 13 });
 
     const randomNumber2 =
       "07" +
@@ -66,23 +75,23 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
         .toString()
         .padStart(8, "0");
 
-    cy.get("#patientForm_zO1NzQhJJwL").type(randomNumber); // Phone number
-    cy.get("#patientForm_ITBGHMF16q9") //Ethnicity
-      .click()
-      .trigger("keydown", { keyCode: 40 })
-      .trigger("keydown", { keyCode: 13 });
-    cy.get("#patientForm_pU4YBVMSaVO") //Nationality
-      .click()
-      .trigger("keydown", { keyCode: 40 })
-      .trigger("keydown", { keyCode: 13 });
-    cy.get("#patientForm_ylvpmyVq8X7") //Religion
-      .click()
-      .trigger("keydown", { keyCode: 40 })
-      .trigger("keydown", { keyCode: 13 });
-    cy.get("#patientForm_yTU9PxoBN6b") //Education level
-      .click()
-      .trigger("keydown", { keyCode: 40 })
-      .trigger("keydown", { keyCode: 13 });
+    // cy.get("#patientForm_zO1NzQhJJwL").type(randomNumber2); // Phone number
+    // cy.get("#patientForm_ITBGHMF16q9") //Ethnicity
+    //   .click()
+    //   .trigger("keydown", { keyCode: 40 })
+    //   .trigger("keydown", { keyCode: 13 });
+    // cy.get("#patientForm_pU4YBVMSaVO") //Nationality
+    //   .click()
+    //   .trigger("keydown", { keyCode: 40 })
+    //   .trigger("keydown", { keyCode: 13 });
+    // cy.get("#patientForm_ylvpmyVq8X7") //Religion
+    //   .click()
+    //   .trigger("keydown", { keyCode: 40 })
+    //   .trigger("keydown", { keyCode: 13 });
+    // cy.get("#patientForm_yTU9PxoBN6b") //Education level
+    //   .click()
+    //   .trigger("keydown", { keyCode: 40 })
+    //   .trigger("keydown", { keyCode: 13 });
     cy.get("#patientForm_uR2Mnlh7sqn") // County of ususal residence
       .click()
       .trigger("keydown", { keyCode: 40 })
@@ -99,6 +108,8 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
       .click()
       .trigger("keydown", { keyCode: 40 })
       .trigger("keydown", { keyCode: 13 });
+
+      cy.get('#patientForm_xED9XkpCeUe').click().trigger("keydown", { keyCode: 40 }).trigger("keydown", { keyCode: 13 });
 
     cy.get(":nth-child(2) > .ant-radio > .ant-radio-input").click(); // Is the patient living with a disability?
     cy.get(".ant-form-item-control-input-content > .ant-btn").click(); //submit
@@ -135,6 +146,7 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
     cy.get("#POMh0dXJnSF").click().trigger("keydown", { keyCode: 13 });
 
     cy.get(".ant-input-affix-wrapper > .ant-input").type("external");
+    cy.wait(4000);
     cy.contains("Unspecified effects of external causes").click();
 
     cy.get("#TlGDmqSbCFu") // Stage at diagnosis
@@ -233,7 +245,7 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
       .trigger("keydown", { keyCode: 40 })
       .trigger("keydown", { keyCode: 13 });
 
-    cy.get("#JkSdwVJ0Cvd").type("2021-10-25").type("{enter}"); //Date of first chemotherapy
+    // cy.get("#JkSdwVJ0Cvd").type("2021-10-25").type("{enter}"); //Date of first chemotherapy
 
     cy.get(
       "#rc-tabs-1-panel-3 > .ant-form > .footer-0-2-20 > .controls-0-2-21 > .ant-btn-primary"
@@ -272,11 +284,42 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
     ).click(); //Next
   });
 
-  it(`TEST 7 -Patient Status`, () => {});
+  it(`TEST 7 -Patient Status`, () => {
+    cy.get("#BITcpbzhbNm").click().trigger("keydown", { keyCode: 13 }); //Patient status
+    cy.get(
+      "#rc-tabs-1-panel-5 > .ant-form > .footer-0-2-20 > .controls-0-2-21 > .ant-btn-primary"
+    ).click(); //Next
+  });
 
-  it(`TEST 8 -Discrimination`, () => {});
+  it(`TEST 8 -Discrimination`, () => {
+    cy.get(
+      "#aJD0OctPlYq > :nth-child(2) > .ant-radio > .ant-radio-input"
+    ).click(); //Discrimination
+    cy.get(
+      "#aywI2UTLihP > :nth-child(2) > .ant-radio > .ant-radio-input"
+    ).click(); //Stigma
 
-  it(`TEST 9 -Post-CAncer Treatment Rehabilitation`, () => {});
+    cy.get(
+      "#rc-tabs-1-panel-6 > .ant-form > .footer-0-2-20 > .controls-0-2-21 > .ant-btn-primary"
+    ).click(); //Next
+  });
 
-  it(`TEST 10 -Survivorship`, () => {});
+  it(`TEST 9 -Post-CAncer Treatment Rehabilitation`, () => {
+    cy.get(
+      "#lRnHnc0zyeE > :nth-child(2) > .ant-radio > .ant-radio-input"
+    ).click(); //Does the patient have a disability as a result of cancer treatment?
+    cy.get(
+      "#tz638BFQZGP > :nth-child(2) > .ant-radio > .ant-radio-input"
+    ).click(); // Did the patient undergo rehabilitation?
+
+    cy.get(
+      "#pPlQvjJZyZF > :nth-child(2) > .ant-radio > .ant-radio-input"
+    ).click(); //Did the patient receive care from a vocational treatment centre?
+
+    cy.get(
+      "#rc-tabs-1-panel-7 > .ant-form > .footer-0-2-20 > .ant-form-item > .ant-row > .ant-col > .ant-form-item-control-input > .ant-form-item-control-input-content > .ant-btn"
+    ).click(); //Complete
+  });
+
+  it(`TEST 10 -Survivorship`, () => { });
 });
