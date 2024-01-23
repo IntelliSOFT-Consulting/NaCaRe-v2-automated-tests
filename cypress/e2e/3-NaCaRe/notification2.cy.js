@@ -52,7 +52,7 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
         '[style="pointer-events: auto; cursor: pointer;"] > .formList-0-2-5 > :nth-child(2)'
       ).click();
       cy.get(".ant-btn > :nth-child(2)").click();
-      cy.get("#search_AP13g7NcBOf").type("12qwqw12"); //search
+      cy.get('#search_name').type("12qwqw12"); //search
       cy.get(".ant-btn > span").click();
       cy.get(".footer-0-2-17 > .ant-btn > span").click();
 
@@ -169,15 +169,43 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
       const randomCancer = cancers[Math.floor(Math.random() * cancers.length)];
 
       // Type a small section of the cancer name
-      cy.get(".ant-input-affix-wrapper > .ant-input").type(
-        randomCancer.substring(0, 20)
-      );
-      cy.wait(5000);
+      cy.get('#patientForm_BzhDnF5fG4x').click()
+      
+      cy.get("#patientForm_BzhDnF5fG4x").click().type("{downarrow}"); //Diagnosis
+      for (let i = 0; i < randomNumberOfKeyPresses; i++) {
+        cy.get("#patientForm_BzhDnF5fG4x").type("{downarrow}");
+      }
+      cy.get("#patientForm_BzhDnF5fG4x").click().type("{enter}");
+      cy.wait(500)
+      /******************************************************************* */
+      const radioGroup = cy.get('#patientForm_xxEsZFtua8N');
+      const radioGroup1  = cy.get('input[name = "#patientForm_xxEsZFtua8N"]')
+    // Generate a random boolean to decide whether to click Yes or No
+    const isUndergoingTreatment = Math.floor(Math.random() * 2)+1;
+    // Click on the randomly chosen option
+   if (isUndergoingTreatment) {
+      radioGroup1.click();
 
-      // Select the whole cancer name
-      cy.contains(randomCancer).click();
+      // If Yes is clicked, enter the date of treatment
+      // Find the input field for treatment start date
+    const dateInput = cy.get('#patientForm_URvkIclUWjq');
+
+    // Generate a random date within the current month
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth() + 1; // Months are zero-based in JavaScript
+    const randomDay = Math.floor(Math.random() * 28) + 1; // Assuming a maximum of 28 days in a month for simplicity
+    const randomDate = `${currentDate.getFullYear()}-${currentMonth}-${randomDay}`;
+
+    // Type the random date into the input field
+    dateInput.type(randomDate); // Replace with the actual date input class
+    } else {
+      radioGroup.click();
+    }
+      /******************************************************************* */
 
       // cy.get('[data-entityindex="0"] > .entityInList > .entityHead > .entityTitleAndIcons > .entityTitle').click()
+
+      
 
       cy.wait(2000);
 
@@ -186,6 +214,7 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
       cy.get(".ant-popconfirm-buttons > .ant-btn-primary").click();
 
       cy.wait(5000);
+      /*
 
       // Additional patient details
 
@@ -722,7 +751,7 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
 
       cy.get(".footer-0-2-33 > .ant-btn").click();
 
-      cy.wait(3000);
+      cy.wait(3000);*/
     });
   }
 });
