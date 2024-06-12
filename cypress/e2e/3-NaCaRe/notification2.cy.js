@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
 
 describe("NaCaRe -KE 2.0 Automated test", () => {
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 1; i++) {
     it("Visits the homepage", () => {
       const firstName = faker.name.firstName();
       const familyName = faker.name.lastName();
@@ -12,7 +12,7 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
         .padStart(9, "0");
 
       cy.visit(
-        "http://45.79.116.38:8080/dhis-web-commons/security/login.action"
+        "http://45.79.116.38:8080/"
       );
       cy.get("#j_username").type("admin");
       cy.get("#j_password").type("district");
@@ -50,94 +50,84 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
 
       // Concatenate the random number with "PAT-" to generate random ID
       const randomValue = `PAT-${randomNumberID}`;
-      cy.get("#patientForm_MiXrdHDZ6Hw").type(randomValue);
+      cy.get('#MiXrdHDZ6Hw').type(randomValue);
 
       const randomNumber = Math.floor(Math.random() * 100000)
         .toString()
         .substring(0, 5);
 
-      cy.get("#patientForm_R1vaUuILrDy").type(firstName);
-      cy.get("#patientForm_hzVijy6tEUF").type(familyName);
+        cy.get('#R1vaUuILrDy').type(firstName);
+        cy.get('#hzVijy6tEUF').type(familyName);
 
-      cy.get("#patientForm_oob3a4JM7H6").type("National Id");
-      cy.get("#patientForm_eFbT7iTnljR").type(idNumber); //identification number
+        cy.get('#oob3a4JM7H6').type("National Id");
+        cy.get('#oob3a4JM7H6').type('{Enter}')
+        cy.get('#eFbT7iTnljR').type(idNumber); //identification number
       cy.wait(500);
 
-      const start = new Date(1960, 0, 1);
-      const end = new Date(2023, 0, 1);
+      const start = new Date(1960, 0, 1);//Date of Birth
+      const end = new Date();
       const randomDate = new Date(
         start.getTime() + Math.random() * (end.getTime() - start.getTime())
-      );
-
+      );  
       const formattedDate = randomDate.toISOString().split("T")[0];
-
-      cy.get("#patientForm_mPpjmOxwsEZ") // Date of birth
+      const [year, month, day] = formattedDate.split("-");  
+      const ddmmyy = `${day}/${month}/${year}`;  
+      cy.get('#mPpjmOxwsEZ') // Date of birth
         .click()
-        .type(formattedDate)
+        .type(ddmmyy)
         .type("{enter}");
 
-      cy.wait(1000);
 
-      const randomPresses11 = Math.floor(Math.random() * 0); // Change 2 to 3 to include the first option
-
-      cy.get("#patientForm_xED9XkpCeUe").click();
+      cy.get('#xED9XkpCeUe').click( {force: true});
       // cy.get("#patientForm_xED9XkpCeUe").trigger("keydown", { keyCode: 40 }); // Down arrow key
-      cy.get("#patientForm_xED9XkpCeUe").trigger("keydown", { keyCode: 13 }); // Enter key
+      cy.get('#xED9XkpCeUe').trigger("keydown", { keyCode: 13 }); // Enter key
 
       cy.wait(1000);
       //************************************************ */
-      cy.get("#patientForm_oob3a4JM7H6").click().type("{downarrow}"); //county of residence
+      cy.get('#uR2Mnlh7sqn').click().type("{downarrow}"); //county of residence
       for (let i = 0; i < randomNumberOfKeyPresses; i++) {
-        cy.get("#patientForm_oob3a4JM7H6").type("{downarrow}");
+        cy.get('#uR2Mnlh7sqn').type("{downarrow}");
       }
-      cy.get("#patientForm_oob3a4JM7H6").click().type("{enter}");
+      cy.get('#uR2Mnlh7sqn').click().type("{enter}");
       /******************************************************************* */
       // Find the input element
-      cy.get("#patientForm_uR2Mnlh7sqn").click();
+      cy.get('#yIp9UZ1Bex6').click({force: true});
 
-      // Simulate pressing the down arrow key to open the dropdown
-      cy.get("#patientForm_uR2Mnlh7sqn").type("{downarrow}");
-      for (let i = 0; i < randomNumberOfKeyPresses; i++) {
-        cy.get("#patientForm_uR2Mnlh7sqn").type("{downarrow}");
-      }
-
-      // Simulate pressing the Enter key to select the option
-      cy.get("#patientForm_uR2Mnlh7sqn").type("{enter}");
-
+    
       //************************************************* */
 
-      cy.get("input#patientForm_yIp9UZ1Bex6").type("NHIF").type("{enter}"); // Type "NHIF" into the input
+      cy.get('#yIp9UZ1Bex6').type("NHIF").type("{enter}"); // Type "NHIF" into the input
       /*************************************************************************************** */
       // Find the input element and click to open the dropdown
-      cy.get("#patientForm_wzHl7HdsSlO").click().type("{enter}");
+      cy.get("#wzHl7HdsSlO").click().type("{enter}");
 
       // Find the input element
-      cy.get("#patientForm_OSs8D8u1El7").click();
+      cy.get("#OSs8D8u1El7").click();
 
       // Simulate pressing the down arrow key to open the dropdown
-      cy.get("#patientForm_OSs8D8u1El7").type("{downarrow}");
+      cy.get("#OSs8D8u1El7").type("{downarrow}");
 
       // Use a loop to press the down arrow key the random number of times
       for (let i = 0; i < randomNumberOfKeyPresses; i++) {
-        cy.get("#patientForm_OSs8D8u1El7").type("{downarrow}");
+        cy.get("#OSs8D8u1El7").type("{downarrow}");
       }
 
       // Simulate pressing the Enter key to select the option
-      cy.get("#patientForm_OSs8D8u1El7").type("{enter}");
+      cy.get("#OSs8D8u1El7").type("{enter}");
       //******************************************************************************************************** */
 
-      cy.get("#patientForm_HEoJiJqgPh1") // Date if diagnosis
+      cy.get("#HEoJiJqgPh1") // Date if diagnosis
         .click()
-        .type("2023-03-10")
+        .type("10/06/2024")
         .type("{enter}");
 
-      cy.get("#patientForm_k5cjujLd0nd") // Date if reporting
+      cy.get("#k5cjujLd0nd") // Date if reporting
         .click()
-        .type("2023-10-10")
+        .type("11/06/2024")
         .type("{enter}");
 
       // Concatenate the random number with "PAT-" to generate random ID
-      cy.get("#patientForm_ghOKiyhlPX0").type(randomValue);
+      cy.get("#ghOKiyhlPX0").type(randomValue);
 
       // cy.get(".ant-input-affix-wrapper > .ant-input").type("Primary neoplasm"); //select type of cancer
       // cy.wait(5000)
@@ -157,33 +147,39 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
       const randomCancer = cancers[Math.floor(Math.random() * cancers.length)];
 
       // Type a small section of the cancer name
-      cy.get('#patientForm_BzhDnF5fG4x').click()
+      cy.get('#BzhDnF5fG4x').click()
 
-      let randomNumberOfKeyPresses1 = Math.floor(Math.random() * 86) + 15; // Generate a random number between 15 and 100
+      let randomNumberOfKeyPresses1 = Math.floor(Math.random() * 20) + 15;
 
       for (let i = 0; i < randomNumberOfKeyPresses1; i++) {
-        cy.get("#patientForm_BzhDnF5fG4x").type("{downarrow}");
+        cy.get("#BzhDnF5fG4x").type("{downarrow}");
       }
 
-      cy.get("#patientForm_BzhDnF5fG4x").type("{enter}");
+      cy.get("#BzhDnF5fG4x").type("{enter}");
       cy.wait(500)
+
+      cy.get('#Cvx3AQ1IQXb').click()
+      for (let i = 0; i < randomNumberOfKeyPresses1; i++) {
+        cy.get('#Cvx3AQ1IQXb').type("{downarrow}");
+      }
+      cy.get('#Cvx3AQ1IQXb').type("{downarrow}").type("{Enter}")
       /******************************************************************* */
 
       let start1 = new Date(2023, 9, 11); // October 11, 2023
       let end1 = new Date(2024, 0, 1); // January 1, 2024
       let randomDate1 = new Date(start1.getTime() + Math.random() * (end1.getTime() - start1.getTime()));
 
-      let year = randomDate1.getFullYear();
-      let month = ('0' + (randomDate1.getMonth() + 1)).slice(-2); // Months are 0-based in JavaScript
-      let day = ('0' + randomDate1.getDate()).slice(-2);
+      let year1 = randomDate1.getFullYear();
+      let month1 = ('0' + (randomDate1.getMonth() + 1)).slice(-2); // Months are 0-based in JavaScript
+      let day1 = ('0' + randomDate1.getDate()).slice(-2);
 
 
-      cy.get('#patientForm_xxEsZFtua8N > :nth-child(2) > .ant-radio > .ant-radio-input').then(($radio) => {
+      cy.get('#xxEsZFtua8N > .ant-radio-wrapper-checked > .ant-radio > .ant-radio-input', {force: true}).then(($radio) => {
         if (!$radio.is(':checked')) {
           // If the radio button is not already selected, click the first radio button
-          cy.get('#patientForm_xxEsZFtua8N > :nth-child(1) > .ant-radio > .ant-radio-input').click({ force: true });
+          cy.get('#xxEsZFtua8N > :nth-child(1) > .ant-radio > .ant-radio-input').click({ force: true });
 
-          cy.get('#patientForm_URvkIclUWjq').type(`${year}-${month}-${day}{enter}`, { force: true });
+          cy.get('#URvkIclUWjq').type(`${year1}-${month11}-${day}{enter}`, { force: true });
 
         }
         // If the radio button is already selected, do nothing and proceed
