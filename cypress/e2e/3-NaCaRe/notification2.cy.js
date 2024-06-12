@@ -46,7 +46,6 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
       cy.get('#search_name').type("12qwqw12"); //search
       cy.get(".ant-btn > span").click();
       cy.contains("Register New Patient").click({ force: true });
-      // cy.get(".footer-0-2-17 > .ant-btn > span").click();
 
       // Concatenate the random number with "PAT-" to generate random ID
       const randomValue = `PAT-${randomNumberID}`;
@@ -72,17 +71,16 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
       const formattedDate = randomDate.toISOString().split("T")[0];
       const [year, month, day] = formattedDate.split("-");  
       const ddmmyy = `${day}/${month}/${year}`;  
-      cy.get('#mPpjmOxwsEZ') // Date of birth
+      cy.get('#mPpjmOxwsEZ')
         .click()
         .type(ddmmyy)
         .type("{enter}");
 
 
       cy.get('#xED9XkpCeUe').click( {force: true});
-      // cy.get("#patientForm_xED9XkpCeUe").trigger("keydown", { keyCode: 40 }); // Down arrow key
       cy.get('#xED9XkpCeUe').trigger("keydown", { keyCode: 13 }); // Enter key
-
       cy.wait(1000);
+
       //************************************************ */
       cy.get('#uR2Mnlh7sqn').click().type("{downarrow}"); //county of residence
       for (let i = 0; i < randomNumberOfKeyPresses; i++) {
@@ -98,40 +96,27 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
 
       cy.get('#yIp9UZ1Bex6').type("NHIF").type("{enter}"); // Type "NHIF" into the input
       /*************************************************************************************** */
-      // Find the input element and click to open the dropdown
       cy.get("#wzHl7HdsSlO").click().type("{enter}");
-
-      // Find the input element
       cy.get("#OSs8D8u1El7").click();
-
-      // Simulate pressing the down arrow key to open the dropdown
       cy.get("#OSs8D8u1El7").type("{downarrow}");
-
-      // Use a loop to press the down arrow key the random number of times
       for (let i = 0; i < randomNumberOfKeyPresses; i++) {
         cy.get("#OSs8D8u1El7").type("{downarrow}");
       }
-
-      // Simulate pressing the Enter key to select the option
       cy.get("#OSs8D8u1El7").type("{enter}");
+
       //******************************************************************************************************** */
-
-      cy.get("#HEoJiJqgPh1") // Date if diagnosis
+      cy.get('#HEoJiJqgPh1') // Date if diagnosis
         .click()
-        .type("10/06/2024")
+        .type("05/05/2024")
+        .type("{enter}");
+        cy.wait(500)
+
+        cy.get('#k5cjujLd0nd') // Date if reporting
+        .click()
+        .type("06/05/2024")
         .type("{enter}");
 
-      cy.get("#k5cjujLd0nd") // Date if reporting
-        .click()
-        .type("11/06/2024")
-        .type("{enter}");
-
-      // Concatenate the random number with "PAT-" to generate random ID
       cy.get("#ghOKiyhlPX0").type(randomValue);
-
-      // cy.get(".ant-input-affix-wrapper > .ant-input").type("Primary neoplasm"); //select type of cancer
-      // cy.wait(5000)
-      // cy.contains("Primary neoplasms of brain").click();
 
       const cancers = [
         "Basal cell carcinoma of skin, unspecified",
@@ -165,26 +150,30 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
       cy.get('#Cvx3AQ1IQXb').type("{downarrow}").type("{Enter}")
       /******************************************************************* */
 
-      let start1 = new Date(2023, 9, 11); // October 11, 2023
-      let end1 = new Date(2024, 0, 1); // January 1, 2024
-      let randomDate1 = new Date(start1.getTime() + Math.random() * (end1.getTime() - start1.getTime()));
-
-      let year1 = randomDate1.getFullYear();
-      let month1 = ('0' + (randomDate1.getMonth() + 1)).slice(-2); // Months are 0-based in JavaScript
-      let day1 = ('0' + randomDate1.getDate()).slice(-2);
-
-
-      cy.get('#xxEsZFtua8N > .ant-radio-wrapper-checked > .ant-radio > .ant-radio-input', {force: true}).then(($radio) => {
+      cy.get('#xxEsZFtua8N > :nth-child(2) > .ant-radio > .ant-radio-input', {force: true}).then(($radio) => {
         if (!$radio.is(':checked')) {
           // If the radio button is not already selected, click the first radio button
           cy.get('#xxEsZFtua8N > :nth-child(1) > .ant-radio > .ant-radio-input').click({ force: true });
 
-          cy.get('#URvkIclUWjq').type(`${year1}-${month11}-${day}{enter}`, { force: true });
+          
+          
+          cy.get('#URvkIclUWjq') // treatment start date
+          .click()
+          .type("10/06/2024")
+          .type("{enter}");
+          
+
 
         }
         // If the radio button is already selected, do nothing and proceed
       });
+      cy.get('#cBrY84DSFq5').click()
+      for (let i = 0; i < randomNumberOfKeyPresses; i++) {
+        cy.get('#cBrY84DSFq5').type("{downarrow}");
+      }
+      cy.get('#cBrY84DSFq5').click().type("{enter}");
 
+    ///////////////////////////////////////////////////
 
 
       // Submit the form
@@ -201,17 +190,17 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
 
       //Treatment
 
-      cy.get('#patientForm_xxEsZFtua8N > :nth-child(1) > .ant-radio > .ant-radio-input').then(($radio) => {
+      cy.get('#xxEsZFtua8N > :nth-child(1) > .ant-radio > .ant-radio-input').then(($radio) => {
         if ($radio.is(':checked')) {
           // If the radio button is selected, run this section
           cy.get("#Trww83cDRNo").type("{downarrow}").type("{enter}");
 
-          cy.get('#xMDNydpyKcj > :nth-child(2) > .ant-radio > .ant-radio-input').click();
-          cy.get('#Cj3inBBEqoN > :nth-child(2) > .ant-radio > .ant-radio-input').click();
-          cy.get('#vtU3HWpm3VQ > :nth-child(2) > .ant-radio > .ant-radio-input').click();
-          cy.get('#ZoWjQn9uDfS > :nth-child(2) > .ant-radio > .ant-radio-input').click();
+          cy.get('#xMDNydpyKcj > :nth-child(1) > .ant-radio > .ant-radio-input').click();
+          cy.get('#Cj3inBBEqoN > :nth-child(1) > .ant-radio > .ant-radio-input').click();
+          cy.get('#vtU3HWpm3VQ > :nth-child(1) > .ant-radio > .ant-radio-input').click();
+          cy.get('#ZoWjQn9uDfS > :nth-child(1) > .ant-radio > .ant-radio-input').click();
 
-          cy.get('.controls-0-2-41 > .ant-btn').click();
+          cy.get('.controls-0-2-45 > .ant-btn').click();
 
           cy.get(".ant-popconfirm-buttons > .ant-btn-primary").click({
             force: true,
