@@ -170,9 +170,7 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
       }
       cy.get('#cBrY84DSFq5').click().type("{enter}");
 
-    ///////////////////////////////////////////////////
-
-
+   
       // Submit the form
       cy.wait(500);
 
@@ -181,8 +179,6 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
       cy.get(".ant-popconfirm-buttons > .ant-btn-primary").click({ force: true });
 
       cy.wait(7000);
-
-
 
 
       //Treatment
@@ -281,8 +277,6 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
 
       cy.wait(1000);
 
-
-
       cy.get("#Nv691bXYX2M").type("{enter}", { force: true });
 
       const options = [
@@ -301,8 +295,6 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
       // cy.contains('button', 'OK').should('be.visible').click({ force: true });
 
       cy.wait(3000);
-
-
 
       //Additional cancer inforation
 
@@ -347,8 +339,7 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
       for (let i = 0; i < randomPresses8; i++) {
         cy.get("#Lz4vGvhdz9O").type("{downarrow}");
       }
-      // cy.get("#Lz4vGvhdz9O").type("{enter}");
-
+     
       //Risk Stratification
       const randomPresses9 = Math.floor(Math.random() * 2);
 
@@ -395,9 +386,6 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
         force: true,
         multiple: true,
       });
-
-      // cy.get(':nth-child(18) > .ant-popover > .ant-popover-content > .ant-popover-inner > .ant-popover-inner-content > .ant-popconfirm-inner-content > .ant-popconfirm-buttons > .ant-btn-primary > span').click({ force: true, multiple: true });
-
       cy.wait(3000);
 
       //Risk factors
@@ -460,7 +448,6 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
       cy.get('#rc-tabs-0-panel-4 > .ant-spin-nested-loading > .ant-spin-container > .ant-form > .footer-0-2-40 > .controls-0-2-41 > .ant-btn').click();
 
       cy.wait(1000);
-      // cy.get(':nth-child(18) > .ant-popover > .ant-popover-content > .ant-popover-inner > .ant-popover-inner-content > .ant-popconfirm-inner-content > .ant-popconfirm-buttons > .ant-btn-primary').click();
 
       cy.get(".ant-popconfirm-buttons > .ant-btn-primary").click({
         force: true,
@@ -546,8 +533,6 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
 
       cy.get('#rc-tabs-0-panel-5 > .ant-spin-nested-loading > .ant-spin-container > .ant-form > .footer-0-2-40 > .controls-0-2-41 > .ant-btn').click();
 
-      // cy.get(':nth-child(28) > .ant-popover > .ant-popover-content > .ant-popover-inner > .ant-popover-inner-content > .ant-popconfirm-inner-content > .ant-popconfirm-buttons > .ant-btn-primary').click();
-
       cy.get(".ant-popconfirm-buttons > .ant-btn-primary").click({
         force: true,
         multiple: true,
@@ -560,8 +545,6 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
       cy.get("#BITcpbzhbNm").type("{enter}");
 
       cy.get('#rc-tabs-0-panel-6 > .ant-spin-nested-loading > .ant-spin-container > .ant-form > .footer-0-2-40 > .controls-0-2-41 > .ant-btn').click();
-
-      // cy.get(':nth-child(30) > .ant-popover > .ant-popover-content > .ant-popover-inner > .ant-popover-inner-content > .ant-popconfirm-inner-content > .ant-popconfirm-buttons > .ant-btn-primary').click();
 
       cy.get(".ant-popconfirm-buttons > .ant-btn-primary").click({
         force: true,
