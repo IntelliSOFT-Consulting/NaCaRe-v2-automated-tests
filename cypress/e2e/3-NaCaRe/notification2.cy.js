@@ -36,9 +36,6 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
       cy.get(".ant-input").type(randomFacility);
       cy.contains(randomFacility).click();
 
-      // cy.get('.ant-input').type("aga khan");
-      // cy.contains("Aga Khan Hospital").click();//Select organization unit through search
-
       cy.get(
         '[style="pointer-events: auto; cursor: pointer;"] > .formList-0-2-5 > :nth-child(2)'
       ).click();
