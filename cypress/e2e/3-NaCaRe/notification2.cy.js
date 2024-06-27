@@ -186,10 +186,19 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
       cy.get('#xxEsZFtua8N > :nth-child(1) > .ant-radio > .ant-radio-input').then(($radio) => {
         if ($radio.is(':checked')) {
           // If the radio button is selected, run this section
-          cy.get("#Trww83cDRNo").type("{downarrow}").type("{enter}");
+        
+
+
 
           cy.get('#xMDNydpyKcj > :nth-child(1) > .ant-radio > .ant-radio-input').click();
           cy.get('#Cj3inBBEqoN > :nth-child(1) > .ant-radio > .ant-radio-input').click();
+          cy.get("#Trww83cDRNo").type("{downarrow}").type("{enter}");
+            cy.get('#Bv1QzBVyXo3')
+            .click()
+            .type("10/06/2024")
+            .type("{enter}");
+          
+
           cy.get('#vtU3HWpm3VQ > :nth-child(1) > .ant-radio > .ant-radio-input').click();
           cy.get('#ZoWjQn9uDfS > :nth-child(1) > .ant-radio > .ant-radio-input').click();
 
@@ -216,7 +225,7 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
 
       cy.get("#iqUkmycBQTH").type("{enter}");
       const generatePhoneNumber = () => {
-        let phoneNumber = "07";
+        let phoneNumber = "7";
         for (let i = 0; i < 8; i++) {
           phoneNumber += Math.floor(Math.random() * 10);
         }
@@ -287,7 +296,7 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
 
       cy.get(randomOption).click({ force: true });
 
-      cy.get('.controls-0-2-41 > .ant-btn').click({ multiple: true, force: true });
+      //cy.get('.controls-0-2-41 > .ant-btn').click({ multiple: true, force: true });
 
       cy.wait(1000);
 
@@ -376,7 +385,7 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
 
       cy.get(randomOption4).click();
 
-      cy.get('#rc-tabs-0-panel-3 > .ant-spin-nested-loading > .ant-spin-container > .ant-form > .footer-0-2-40 > .controls-0-2-41 > .ant-btn > span').click({ force: true });
+      //cy.get('#rc-tabs-0-panel-3 > .ant-spin-nested-loading > .ant-spin-container > .ant-form > .footer-0-2-40 > .controls-0-2-41 > .ant-btn > span').click({ force: true });
 
       cy.scrollTo('bottom', { ensureScrollable: false });
 
