@@ -5,7 +5,7 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
     it("Visits the homepage", () => {
       const firstName = faker.name.firstName();
       const familyName = faker.name.lastName();
-      const randomNumberOfKeyPresses = Math.floor(Math.random() * 5) + 1; // Random number between 1 and 5
+      const randomNumberOfKeyPresses = Math.floor(Math.random() * 5) + 1;
       const randomNumberID = Math.floor(1000 + Math.random() * 9000);
       const idNumber = Math.floor(Math.random() * 1e9)
         .toString()
@@ -36,9 +36,7 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
       cy.get(".ant-input").type(randomFacility);
       cy.contains(randomFacility).click();
 
-      cy.get(
-        '[style="pointer-events: auto; cursor: pointer;"] > .formList-0-2-5 > :nth-child(2)'
-      ).click();
+      cy.get('[href="#/submissions/pZSnyiO9EF7"] > .formList-0-2-5').click();
       cy.get(".ant-btn > :nth-child(2)").click();
       cy.get('#search_name').type("12qwqw12"); //search
       cy.get(".ant-btn > span").click();
@@ -91,7 +89,7 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
     
       //************************************************* */
 
-      cy.get('#yIp9UZ1Bex6').type("NHIF").type("{enter}"); // Type "NHIF" into the input
+      cy.get('#yIp9UZ1Bex6').type("SHIF").type("{enter}"); // Type "NHIF" into the input
       /*************************************************************************************** */
       cy.get("#wzHl7HdsSlO").click().type("{enter}");
       cy.get("#OSs8D8u1El7").click();
