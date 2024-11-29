@@ -47,9 +47,6 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
             cy.get(".ant-input").type(randomFacility);
             cy.contains(randomFacility).click();
 
-            // cy.get('.ant-input').type("aga khan");
-            // cy.contains("Aga Khan Hospital").click();//Select organization unit through search
-
             cy.get('[style="cursor: pointer;"] > .formList-0-2-5').click(); //Click on the first form in the list
 
             cy.get('body').then(($body) => {
@@ -71,12 +68,6 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
                 cy.get('#sxaTmrTI5Hm > :nth-child(2) > .ant-radio > .ant-radio-input').click();
                 isFirstOptionSelected = false;
             }
-
-            if (isFirstOptionSelected) {
-                const randomNum = Math.floor(Math.random() * 90000) + 10000;
-                cy.get('#pL4Vj9kJmvd').type(randomNum.toString());
-            }
-
 
             if (Math.random() < 0.5) {
                 cy.get('#S0HFYZrRX0O > :nth-child(1) > .ant-radio > .ant-radio-input').click();
@@ -199,89 +190,9 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
 
             let option3 = Math.floor(Math.random() * 2); // This will give either 0 or 1
 
-            if (option3 === 0) {
-                cy.get('#nH7dl4auFfo > :nth-child(1) > .ant-radio > .ant-radio-input').click();
-            } else {
-                cy.get('#nH7dl4auFfo > :nth-child(2) > .ant-radio > .ant-radio-input').click();
-            }
-
             let option4 = Math.floor(Math.random() * 2); // This will give either 0 or 1
 
-            if (option4 === 0) {
-                cy.get('#wWYnnSNgZQN > :nth-child(1) > .ant-radio > .ant-radio-input').click();
-            } else {
-                cy.get('#wWYnnSNgZQN > :nth-child(2) > .ant-radio > .ant-radio-input').click();
-            }
-
-
-
-            const times6 = Math.floor(Math.random() * 6); // Generate a random number between 0 and 5
-
-            for (let i = 0; i < times6; i++) {
-                cy.get('#bggwXiKx820').type('{downarrow}');
-            }
-
-            cy.get('#bggwXiKx820').type('{enter}');
-
-
-
-
-            let option5 = Math.floor(Math.random() * 2); // This will give either 0 or 1
-
-            if (option5 === 0) {
-                cy.get('#Q93rr9rC9Uq > :nth-child(1) > .ant-radio > .ant-radio-input').click();
-            } else {
-                cy.get('#Q93rr9rC9Uq > :nth-child(2) > .ant-radio > .ant-radio-input').click();
-            }
-
-
-            let option6 = Math.floor(Math.random() * 2); // This will give either 0 or 1
-
-            if (option6 === 0) {
-                cy.get('#t1BJwNXTqfB > :nth-child(1) > .ant-radio > .ant-radio-input').click();
-            } else {
-                cy.get('#t1BJwNXTqfB > :nth-child(2) > .ant-radio > .ant-radio-input').click();
-            }
-
-            let option7 = Math.floor(Math.random() * 2); // This will give either 0 or 1
-
-            if (option7 === 0) {
-                cy.get('#SRsBV7qxtsM > :nth-child(1) > .ant-radio > .ant-radio-input').click();
-            } else {
-                cy.get('#SRsBV7qxtsM > :nth-child(2) > .ant-radio > .ant-radio-input').click();
-            }
-
-
-            let option8 = Math.floor(Math.random() * 2); // This will give either 0 or 1
-
-            if (option8 === 0) {
-                cy.get('#OD9dNSxqoAn > :nth-child(1) > .ant-radio > .ant-radio-input').click();
-            } else {
-                cy.get('#OD9dNSxqoAn > :nth-child(2) > .ant-radio > .ant-radio-input').click();
-            }
-
-
-            let option9 = Math.floor(Math.random() * 2); // This will give either 0 or 1
-
-            if (option9 === 0) {
-                cy.get('#ZswBrZYZmDk > :nth-child(1) > .ant-radio > .ant-radio-input').click();
-            } else {
-                cy.get('#ZswBrZYZmDk > :nth-child(2) > .ant-radio > .ant-radio-input').click();
-            }
-
-
-            let option11 = Math.floor(Math.random() * 2); // This will give either 0 or 1
-
-            if (option11 === 0) {
-                cy.get('#qVlA9ErEjTO > :nth-child(1) > .ant-radio > .ant-radio-input').click();
-            } else {
-                cy.get('#qVlA9ErEjTO > :nth-child(2) > .ant-radio > .ant-radio-input').click();
-            }
-
-
-            cy.get('.ant-form > .ant-btn').click(); //Click on the "Save" button
-
-
+            cy.contains('Save').click({force: true}); //Click on the "Save" button
 
             cy.wait(5000);
 

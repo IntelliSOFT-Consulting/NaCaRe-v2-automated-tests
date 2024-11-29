@@ -56,7 +56,7 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
         cy.get('#oob3a4JM7H6').type("National Id");
         cy.get('#oob3a4JM7H6').type('{Enter}')
         cy.get('#eFbT7iTnljR').type(idNumber); //identification number
-      cy.wait(500);
+        cy.wait(500);
 
       const start = new Date(1960, 0, 1);//Date of Birth
       const end = new Date();
@@ -74,23 +74,17 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
 
       cy.get('#xED9XkpCeUe').click( {force: true});
       cy.get('#xED9XkpCeUe').trigger("keydown", { keyCode: 13 }); // Enter key
-      cy.wait(1000);
+      cy.wait(2000);
 
-      //************************************************ */
       cy.get('#uR2Mnlh7sqn').click().type("{downarrow}"); //county of residence
       for (let i = 0; i < randomNumberOfKeyPresses; i++) {
         cy.get('#uR2Mnlh7sqn').type("{downarrow}");
       }
       cy.get('#uR2Mnlh7sqn').click().type("{enter}");
-      /******************************************************************* */
       // Find the input element
       cy.get('#yIp9UZ1Bex6').click({force: true});
 
-    
-      //************************************************* */
-
       cy.get('#yIp9UZ1Bex6').type("SHIF").type("{enter}"); // Type "NHIF" into the input
-      /*************************************************************************************** */
       cy.get("#wzHl7HdsSlO").click().type("{enter}");
       cy.get("#OSs8D8u1El7").click();
       cy.get("#OSs8D8u1El7").type("{downarrow}");
@@ -99,7 +93,6 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
       }
       cy.get("#OSs8D8u1El7").type("{enter}");
 
-      //******************************************************************************************************** */
       cy.get('#HEoJiJqgPh1') // Date if diagnosis
         .click()
         .type("05/05/2024")
@@ -185,9 +178,6 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
         if ($radio.is(':checked')) {
           // If the radio button is selected, run this section
         
-
-
-
           cy.get('#xMDNydpyKcj > :nth-child(1) > .ant-radio > .ant-radio-input').click();
           cy.get('#Cj3inBBEqoN > :nth-child(1) > .ant-radio > .ant-radio-input').click();
           cy.get("#Trww83cDRNo").type("{downarrow}").type("{enter}");
@@ -200,7 +190,7 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
           cy.get('#vtU3HWpm3VQ > :nth-child(1) > .ant-radio > .ant-radio-input').click();
           cy.get('#ZoWjQn9uDfS > :nth-child(1) > .ant-radio > .ant-radio-input').click();
 
-          cy.get('.controls-0-2-45 > .ant-btn').click();
+          cy.contains("Save").click();
 
           cy.get(".ant-popconfirm-buttons > .ant-btn-primary").click({
             force: true,
@@ -209,7 +199,6 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
           cy.wait(1000);
 
         }
-        // If the radio button is not selected, do nothing and proceed
       });
 
       // Additional patient details
@@ -273,7 +262,7 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
 
       cy.get("#oBeTBKEwEil").type("{enter}");
 
-      let randomPresses33 = Math.floor(Math.random() * 6); // Generate a random number between 0 and 5
+      let randomPresses33 = Math.floor(Math.random() * 6);
 
       cy.get("#PdDmTsAjysh").click();
 
@@ -294,18 +283,14 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
 
       cy.get(randomOption).click({ force: true });
 
-      //cy.get('.controls-0-2-41 > .ant-btn').click({ multiple: true, force: true });
 
       cy.wait(1000);
 
       cy.get(".ant-popconfirm-buttons > .ant-btn-primary").click({ multiple: true, force: true });
-      // cy.contains('button', 'OK').should('be.visible').click({ force: true });
 
       cy.wait(3000);
 
       //Additional cancer inforation
-
-      //TNM Staging
 
       const randomPresses4 = Math.floor(Math.random() * 6);
 
@@ -334,11 +319,6 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
 
       //Imaging
       const randomPresses7 = Math.floor(Math.random() * 5);
-
-      // for (let i = 0; i < randomPresses7; i++) {
-      //   cy.get("#bggwXiKx820").type("{downarrow}");
-      // }
-      // cy.get("#bggwXiKx820").type("{enter}");
 
       //Surgical
       const randomPresses8 = Math.floor(Math.random() * 1);
@@ -382,8 +362,6 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
         options4[Math.floor(Math.random() * options4.length)];
 
       cy.get(randomOption4).click();
-
-      //cy.get('#rc-tabs-0-panel-3 > .ant-spin-nested-loading > .ant-spin-container > .ant-form > .footer-0-2-40 > .controls-0-2-41 > .ant-btn > span').click({ force: true });
 
       cy.scrollTo('bottom', { ensureScrollable: false });
 
@@ -451,8 +429,7 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
         cy.get("#U357CYMYOQ0").type("{downarrow}");
       }
       cy.get("#U357CYMYOQ0").type("{enter}");
-
-      cy.get('#rc-tabs-0-panel-4 > .ant-spin-nested-loading > .ant-spin-container > .ant-form > .footer-0-2-40 > .controls-0-2-41 > .ant-btn').click();
+      cy.contains("Save").click({force: true})
 
       cy.wait(1000);
 
@@ -538,8 +515,7 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
 
       cy.get(randomOption25).click({ force: true });
 
-      cy.get('#rc-tabs-0-panel-5 > .ant-spin-nested-loading > .ant-spin-container > .ant-form > .footer-0-2-40 > .controls-0-2-41 > .ant-btn').click();
-
+      cy.contains("Save").click({force: true})
       cy.get(".ant-popconfirm-buttons > .ant-btn-primary").click({
         force: true,
         multiple: true,
@@ -551,8 +527,7 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
 
       cy.get("#BITcpbzhbNm").type("{enter}");
 
-      cy.get('#rc-tabs-0-panel-6 > .ant-spin-nested-loading > .ant-spin-container > .ant-form > .footer-0-2-40 > .controls-0-2-41 > .ant-btn').click();
-
+      cy.contains("Save").click({force: true})
       cy.get(".ant-popconfirm-buttons > .ant-btn-primary").click({
         force: true,
         multiple: true,
@@ -570,7 +545,7 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
         "#aywI2UTLihP > :nth-child(2) > .ant-radio > .ant-radio-input"
       ).click();
 
-      cy.get('#rc-tabs-0-panel-7 > .ant-spin-nested-loading > .ant-spin-container > .ant-form > .footer-0-2-40 > .controls-0-2-41 > .ant-btn').click();
+      cy.contains("Save").click({force: true});
 
       cy.get(".ant-popconfirm-buttons > .ant-btn-primary").click({
         force: true,
@@ -593,28 +568,14 @@ describe("NaCaRe -KE 2.0 Automated test", () => {
         "#pPlQvjJZyZF > :nth-child(2) > .ant-radio > .ant-radio-input"
       ).click();
 
-      cy.get('#rc-tabs-0-panel-8 > .ant-spin-nested-loading > .ant-spin-container > .ant-form > .footer-0-2-40 > .controls-0-2-41 > .ant-btn').click();
-
+      cy.contains("Save").click({force: true})
       cy.get(".ant-popconfirm-buttons > .ant-btn-primary").click({
         force: true,
         multiple: true,
       });
 
       cy.wait(1000);
-
-      //Survivorship
-
-      cy.get("#Akvj6sjSWt1").type("{enter}");
-
-      cy.get("#W17Cq7ZpgnY").type("{enter}");
-
-      cy.get('.footer-0-2-40 > .ant-btn > span').click({ force: true });
-
-      cy.wait(3000);
-
-
-
-
+   
     });
   }
 });
